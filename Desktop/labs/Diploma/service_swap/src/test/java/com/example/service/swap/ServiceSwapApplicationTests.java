@@ -1,4 +1,4 @@
-package com.example.service_swap;
+package com.example.service.swap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

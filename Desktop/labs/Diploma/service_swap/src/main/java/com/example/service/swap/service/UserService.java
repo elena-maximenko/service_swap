@@ -1,6 +1,6 @@
-package com.example.service_swap.service;
+package com.example.service.swap.service;
 
-import com.example.service_swap.entity.User;
+import com.example.service.swap.entity.User;
 
 import java.util.List;
 

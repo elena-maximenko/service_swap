@@ -1,4 +1,4 @@
-package com.example.service_swap;
+package com.example.service.swap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,8 +1,9 @@
-package com.example.service_swap.entity;
+package com.example.service.swap.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -10,8 +11,8 @@ import java.util.Set;
 @Table(name="service")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = {"category", "users"})
+@ToString(exclude = {"users", "category"})
 public class Service {
     @Id
     @Column(name = "id")
@@ -25,6 +26,7 @@ public class Service {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @ManyToMany(mappedBy = "services")
+  /*  @ManyToMany(mappedBy = "services")
     private Set<User> users;
+*/
 }

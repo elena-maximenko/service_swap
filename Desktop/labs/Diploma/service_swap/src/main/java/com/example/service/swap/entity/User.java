@@ -1,17 +1,18 @@
-package com.example.service_swap.entity;
+package com.example.service.swap.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode
-@ToString
+@ToString(exclude = "services")
+@EqualsAndHashCode(exclude = "services")
 @Table(name = "user")
 public class User {
     @Id

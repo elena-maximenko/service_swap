@@ -2,7 +2,31 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+const React = require('react');
+const ReactDOM = require('react-dom');
+const client = require('./client');
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {users: []};
+    }
+
+    componentDidMount() {
+        client({method: 'GET', path: '/api/users'}).done(response => {
+            this.setState({users: response.entity._embedded.employees}); // from REST
+        });
+    }
+
+    render() {
+        return (
+            <UserList users={this.state.users}/>
+        )
+    }
+}
+
+/*class App extends Component {
   render() {
     return (
       <div className="App">
@@ -16,6 +40,6 @@ class App extends Component {
       </div>
     );
   }
-}
+}*/
 
 export default App;

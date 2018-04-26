@@ -1,6 +1,6 @@
-package com.example.service_swap.repository;
+package com.example.service.swap.repository;
 
-import com.example.service_swap.entity.User;
+import com.example.service.swap.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

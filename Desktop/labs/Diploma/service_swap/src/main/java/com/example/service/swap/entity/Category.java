@@ -1,8 +1,9 @@
-package com.example.service_swap.entity;
+package com.example.service.swap.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -10,8 +11,8 @@ import java.util.Set;
 @Table(name="category")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = "services")
+@ToString(exclude = "services")
 class Category {
     @Id
     @Column(name = "id")
@@ -21,6 +22,7 @@ class Category {
     @Column(name="name", unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "category")
+ /*   @OneToMany(mappedBy = "category")
     private Set<Service> services;
+*/
 }

@@ -1,9 +1,9 @@
-package com.example.service_swap.service.impl;
+package com.example.service.swap.service.impl;
 
 
-import com.example.service_swap.entity.User;
-import com.example.service_swap.repository.UserRepository;
-import com.example.service_swap.service.UserService;
+import com.example.service.swap.entity.User;
+import com.example.service.swap.repository.UserRepository;
+import com.example.service.swap.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.List;

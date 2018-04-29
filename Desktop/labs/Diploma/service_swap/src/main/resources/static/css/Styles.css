@@ -44,13 +44,6 @@ td {
     height: 30px;
 }
 
-.glyphicon-button-delete{
-    border-radius: 35px;
-    border-color: transparent;
-    height: 30px;
-    color: red;
-}
-
 .col{
     color: darkmagenta;
 }

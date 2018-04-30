@@ -187,6 +187,7 @@ button {
 }
 
 a:visited, a:hover, a:link, a:active {
+    cursor: pointer;
     text-decoration: none;
     color: darkmagenta;
 }

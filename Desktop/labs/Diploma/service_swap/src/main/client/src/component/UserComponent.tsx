@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import './index.css';
 
-import { Link } from 'react-router-dom';
-
 class UserComponent extends React.Component<{}, any>{
     constructor(props: any) {
         super(props);
@@ -15,6 +13,8 @@ class UserComponent extends React.Component<{}, any>{
             isLoading: false,
             users: []
         };
+
+        this.deleteUser = this.deleteUser.bind(this);
     }
 
     public componentDidMount() {
@@ -23,6 +23,18 @@ class UserComponent extends React.Component<{}, any>{
         fetch('http://localhost:8080/users')
             .then(response => response.json())
             .then(data => this.setState({users: data, isLoading: false}));
+    }
+
+    public deleteUser(id:number) {
+        window.console.log('hjnk');
+        fetch('http://localhost:8080/delete-user/'+id, {
+            headers: {
+                'Accept': 'application/json, text/plain',
+            },
+            method: 'POST'})
+            .then(response => response.json())
+            .then(data => this.setState({users: data, isLoading: false}));
+
     }
 
     public render() {
@@ -62,8 +74,8 @@ class UserComponent extends React.Component<{}, any>{
                                         </button>
                                     </td>
                                     <td>
-                                        <button className="glyphicon-button-delete" data-style="color: red">
-                                            <Link to={`/delete-user/${user.id}`}><i className="fas fa-trash-alt"/></Link>
+                                        <button className="glyphicon-button-delete" onClick={this.deleteUser.bind(this, user.id)}>
+                                            <i className="fas fa-trash-alt"/>
                                         </button>
                                     </td>
                                 </tr>

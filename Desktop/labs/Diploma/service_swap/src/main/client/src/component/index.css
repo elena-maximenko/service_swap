@@ -186,6 +186,10 @@ button {
     box-shadow: 0 1px 10px red;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 a:visited, a:hover, a:link, a:active {
     cursor: pointer;
     text-decoration: none;

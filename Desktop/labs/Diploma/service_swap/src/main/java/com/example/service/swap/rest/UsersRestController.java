@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class UsersRestController {
     @Resource
     private UserService userService;
@@ -18,14 +19,9 @@ public class UsersRestController {
         return userService.findAll();
     }
 
-    @PostMapping("/user/{id}")
-    @CrossOrigin(origins = "http://localhost:3000/delete-user/{id}")
+    @PostMapping("/delete-user/{id}")
     public List<User> deleteUser(@PathVariable int id){
-        System.out.println("ID = " + id);
-        User user = userService.findAll().remove(id);
-        System.out.println("deleted = " + user);
+        User user = userService.delete(id);
         return userService.findAll();
     }
-
-
 }

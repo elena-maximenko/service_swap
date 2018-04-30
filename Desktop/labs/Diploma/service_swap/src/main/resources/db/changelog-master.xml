@@ -6,4 +6,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
+    <changeSet id="1" author="emaxi">
+        <sqlFile path="db/createDB.sql"></sqlFile>
+    </changeSet>
+    <changeSet id="2" author="emaxi">
+        <sqlFile path="db/fillDB.sql"></sqlFile>
+    </changeSet>
 </databaseChangeLog>

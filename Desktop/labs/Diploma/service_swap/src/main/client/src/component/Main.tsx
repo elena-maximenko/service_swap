@@ -4,6 +4,7 @@ import {Component} from 'react';
 
 import {Route, Switch} from 'react-router-dom'
 
+import CategoryComponent from "./CategoryComponent";
 import UserComponent from "./UserComponent";
 
 class Main extends Component {
@@ -11,8 +12,8 @@ class Main extends Component {
         return (
             <main>
                 <Switch>
+                    <Route path='/category' component={CategoryComponent}/>
                     <Route path='/' component={UserComponent}/>
-                    <Route path='/user/' component={UserComponent}/>
                 </Switch>
             </main>
         )

@@ -10,15 +10,17 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/category")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CategoryRestController {
 
     @Resource
     private CategoryService categoryService;
 
     @GetMapping(value = "/categories")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Category> getCategories() {
         System.out.println("get categories");
+        System.out.println("categories = "+ categoryService.findAll());
         return categoryService.findAll();
     }
 }

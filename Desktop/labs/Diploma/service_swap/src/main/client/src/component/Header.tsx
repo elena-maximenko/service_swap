@@ -14,9 +14,9 @@ class Header extends Component {
                                 <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item active">
-                            <a className="nav-link" href="/">
+                            <Link to={'/category'} className="nav-link">
                                 <div className="col">Categories</div>
-                                <span className="sr-only">(current)</span></a>
+                        </Link>
                         </li>
                         <li className="nav-item active">
                             <a className="nav-link" href="/">

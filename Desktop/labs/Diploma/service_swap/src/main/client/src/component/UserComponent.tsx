@@ -34,7 +34,6 @@ class UserComponent extends React.Component<{}, any>{
             method: 'POST'})
             .then(response => response.json())
             .then(data => this.setState({users: data, isLoading: false}));
-
     }
 
     public render() {

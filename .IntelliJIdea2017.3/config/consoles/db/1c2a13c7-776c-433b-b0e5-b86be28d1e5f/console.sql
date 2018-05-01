@@ -1,0 +1,5 @@
+CREATE DATABASE `a`;
+USE `a`;
+CREATE TABLE `a`.`q`(
+  ID INT
+);

@@ -21,7 +21,7 @@ public class UserRestController {
 
     @PostMapping("/delete-user/{id}")
     public List<User> deleteUser(@PathVariable int id){
-        User user = userService.delete(id);
+        userService.delete(id);
         return userService.findAll();
     }
 }

@@ -20,6 +20,19 @@ class CategoryComponent extends React.Component<{}, any> {
         fetch('http://localhost:8080/categories')
             .then(response => response.json())
             .then(data => this.setState({categories: data, isLoading: false}));
+
+        this.deleteCategory = this.deleteCategory.bind(this);
+    }
+
+    public deleteCategory(id:number) {
+        window.console.log('hjnk');
+        fetch('http://localhost:8080/delete-category/'+id, {
+            headers: {
+                'Accept': 'application/json, text/plain',
+            },
+            method: 'POST'})
+            .then(response => response.json())
+            .then(data => this.setState({categories: data, isLoading: false}));
     }
 
     public render() {
@@ -55,7 +68,7 @@ class CategoryComponent extends React.Component<{}, any> {
                                     </button>
                                 </td>
                                 <td>
-                                    <button className="glyphicon-button-delete">
+                                    <button className="glyphicon-button-delete" onClick={this.deleteCategory.bind(this, category.id)}>
                                         <i className="fas fa-trash-alt"/>
                                     </button>
                                 </td>

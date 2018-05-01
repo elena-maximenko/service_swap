@@ -2,9 +2,7 @@ package com.example.service.swap.rest;
 
 import com.example.service.swap.entity.Category;
 import com.example.service.swap.service.CategoryService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,8 +17,12 @@ public class CategoryRestController {
     @GetMapping(value = "/categories")
     @CrossOrigin(origins = "http://localhost:3000")
     public List<Category> getCategories() {
-        System.out.println("get categories");
-        System.out.println("categories = "+ categoryService.findAll());
+        return categoryService.findAll();
+    }
+
+    @PostMapping("/delete-category/{id}")
+    public List<Category> deleteCategory(@PathVariable int id){
+        categoryService.delete(id);
         return categoryService.findAll();
     }
 }

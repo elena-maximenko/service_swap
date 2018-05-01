@@ -3,17 +3,14 @@ package com.example.service.swap.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
-import java.util.Set;
+
 
 @Data
 @Entity
 @Table(name="category")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = "services")
-@ToString(exclude = "services")
-class Category {
+public class Category {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

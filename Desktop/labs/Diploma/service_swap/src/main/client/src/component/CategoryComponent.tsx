@@ -1,6 +1,13 @@
 import * as React from "react";
 
+
+import CategoryModal from "./CategoryModal";
+
+import {Button} from "react-bootstrap";
+
 class CategoryComponent extends React.Component<{}, any> {
+    // public categoryModal:CategoryModal;
+
     constructor(props: any) {
         window.console.log('11');
 
@@ -8,8 +15,16 @@ class CategoryComponent extends React.Component<{}, any> {
 
         this.state = {
             categories: [],
-            isLoading: false
+           // categoryModal: CategoryModal,
+            isLoading: false,
+            showPopup: false
         };
+    }
+
+    public togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
     }
 
     public componentDidMount() {
@@ -22,6 +37,7 @@ class CategoryComponent extends React.Component<{}, any> {
             .then(data => this.setState({categories: data, isLoading: false}));
 
         this.deleteCategory = this.deleteCategory.bind(this);
+        this.togglePopup = this.togglePopup.bind(this);
     }
 
     public deleteCategory(id:number) {
@@ -45,6 +61,7 @@ class CategoryComponent extends React.Component<{}, any> {
         return (
             <div>
                 <div className="container">
+                    <Button className='btn btn-primary cntr' onClick={this.togglePopup}><i className='fas fa-plus'/></Button>
                     <table className="table table-striped">
                         <thead>
                         <tr>
@@ -64,7 +81,7 @@ class CategoryComponent extends React.Component<{}, any> {
                                 </td>
                                 <td>
                                     <button className="glyphicon-button">
-                                        <a> <i className="fas fa-pencil-alt"/></a>
+                                        <i className="fas fa-pencil-alt"/>
                                     </button>
                                 </td>
                                 <td>
@@ -76,6 +93,12 @@ class CategoryComponent extends React.Component<{}, any> {
                         )}
                     </table>
                 </div>
+                {this.state.showPopup ?
+                    <CategoryModal
+                        closePopup={this.togglePopup}
+                    />
+                    : null
+                }
             </div>
         );
     }

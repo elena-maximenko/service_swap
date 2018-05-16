@@ -1,8 +1,8 @@
-// import {TextField} from 'material-ui';
+import {TextField} from 'material-ui';
 
 import * as React from "react";
 
-// import {Button, Col, FormGroup, Label, Modal, Row} from "react-bootstrap";
+import {Button, Label, Modal} from "react-bootstrap";
 
 
 class CategoryModal extends React.Component<any> {
@@ -22,28 +22,15 @@ class CategoryModal extends React.Component<any> {
     public render() {
         window.console.log('fghbjk,.');
         return (
-            <div>
-                GFhk!
-            </div>
-           /* <div className="static-modal">
+           <div className="static-modal">
                 <Modal.Dialog>
-                    <Modal.Header/>
 
                     <Modal.Body>
-                        <div className="row mb-2">
-                            <div className="col-sm-12">
-                                <Row>
-                                    <Col>
-                                        <FormGroup>
                                             <Label>Name </Label>
-                                            <Col>
+
                                                 <TextField id={"categoryName"}/>
-                                            </Col>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </div>
+
+
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -53,7 +40,7 @@ class CategoryModal extends React.Component<any> {
                         </Button>
                     </Modal.Footer>
                 </Modal.Dialog>
-            </div>*/
+            </div>
         );
     }
 

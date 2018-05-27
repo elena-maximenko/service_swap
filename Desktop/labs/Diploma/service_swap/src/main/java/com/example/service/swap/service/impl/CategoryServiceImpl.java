@@ -24,8 +24,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.saveAndFlush(category);
     }
 
-
-
     @Override
     public Category delete(int id){
         Category deletedCategory = categoryRepository.getOne(id);

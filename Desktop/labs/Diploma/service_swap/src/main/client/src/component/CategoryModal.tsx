@@ -4,13 +4,23 @@ import * as React from "react";
 
 import {Button, Label, Modal} from "react-bootstrap";
 
+class CategoryModal extends React.Component<any, { value: string }> {
 
-class CategoryModal extends React.Component<any> {
-
-  /*  constructor(props: any) {
+    constructor(props: any) {
         super(props);
+        this.create = this.create.bind(this);
 
-        this.state = {isOpen: false};
+        this.state = {value: ''};
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    public handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    public create(){
+        window.console.log(this.state.value);
     }
 
    /* public closePopup ()  {
@@ -20,21 +30,17 @@ class CategoryModal extends React.Component<any> {
     }*/
 
     public render() {
-        window.console.log('fghbjk,.');
         return (
            <div className="static-modal">
                 <Modal.Dialog>
-
                     <Modal.Body>
-                                            <Label>Name </Label>
+                        <Label>Name </Label>
 
-                                                <TextField id={"categoryName"}/>
-
-
+                        <TextField value={this.state.value} onChange={this.handleChange}/>
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button bsStyle="primary">OK</Button>
+                        <Button bsStyle="primary" onClick={this.create}>OK</Button>
                         <Button onClick={this.props.closePopup}>
                             Close
                         </Button>

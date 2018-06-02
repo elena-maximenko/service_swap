@@ -1,16 +1,17 @@
 import * as React from "react";
 
-
 import CategoryModal from "./CategoryModal";
 
 import {Button} from "react-bootstrap";
 import EditCategoryModal from "./EditCategoryComponent";
 
+import {Sorter} from "../util/Sorter";
+
 class CategoryComponent extends React.Component<{}, any> {
+    private asc = true;
+    private sorter = new Sorter();
 
     constructor(props: any) {
-        window.console.log('11');
-
         super(props);
 
         this.state = {
@@ -20,6 +21,8 @@ class CategoryComponent extends React.Component<{}, any> {
             showEdit: false,
             showPopup: false
         };
+
+        this.sort = this.sort.bind(this);
     }
 
     public togglePopup() {
@@ -59,6 +62,29 @@ class CategoryComponent extends React.Component<{}, any> {
             .then(data => this.setState({categories: data, isLoading: false}));
     }
 
+   /* public sortByKey(array, key, asc) {
+        return array.sort((a, b) => {
+            const x = a[key];
+            const y = b[key];
+            if(asc){
+                return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+            }
+            else {
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            }
+        });
+    } */
+
+    public sort(){
+       /* window.console.log("asc =" + this.asc);
+        const catego = this.sorter.sortByKey(this.state.categories, 'name', this.asc);
+        for(const cat of catego){
+            window.console.log("name = " + cat.name);
+        }*/
+        this.setState({categories: this.sorter.sortByKey(this.state.categories, 'name', this.asc)});
+        this.asc = (this.asc === true)?false:true;
+    }
+
     public render() {
         const {isLoading, categories} = this.state;
 
@@ -70,7 +96,9 @@ class CategoryComponent extends React.Component<{}, any> {
             <div>
                 <div className="container">
                     <Button className='btn btn-primary cntr' onClick={this.togglePopup}><i className='fas fa-plus'/></Button>
+
                     <table className="table table-striped">
+                        <i onClick={this.sort} className="fas fa-sort"/>
                         <thead>
                         <tr>
                             <th>#</th>

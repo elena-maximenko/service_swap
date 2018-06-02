@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type="text/css" href="../static/css/Styles.css">
+    <link rel="script" href="../static/css/Scripts.js">
+    <script>
+        var correct_name = false;
+        var correct_surname = false;
+        var correct_password = false;
+        var match = false;
+        var correct_services = false;
+        var correct_services_input = false;
+        var correct_login = false;
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function checkNames(name) {
+            var regexp = /^[A-Z]{1}[a-z]+$/;
+            if(regexp.test(name)){
+                allowed_click = true;
+            }
+            return regexp.test(name);
+        }
+
+        function checkServices() {
+            //after]*,?\\s?\.?\\n?
+            var regexp = /^[A-Za-z]*,?\s?\n?\.?$/;
+            ownServ = $("#ownServices").val();
+            console.log(ownServ);
+            var selectedValues = $("#services").val();
+
+            console.log('test = ' + regexp.test(ownServ));
+            console.log('ownServ = ' + ownServ);
+            console.log('selectedValues = ' + selectedValues);
+
+            if (ownServ=='' && selectedValues==''){
+                console.log('cgvbhjn');
+                document.getElementById('errorBlock').style.display = 'block';
+                document.getElementById('textIn').style.display = 'block';
+                document.getElementById('textIn').innerText = 'Input or choose some services!';
+            }
+            else if (!regexp.test(ownServ)) {
+                document.getElementById('errorBlock').style.display = 'block';
+                document.getElementById('textIn').style.display = 'block';
+                document.getElementById('textIn').innerText = 'Wrong input of Your services!';
+            }
+            else if ((regexp.test(ownServ) && ownServ !== '') || selectedValues.length > 0) {
+                document.getElementById('errorBlock').style.display = 'none';
+                document.getElementById('textIn').style.display = 'none';
+            }
+        }
+
+        function check(element) {
+            var name = document.getElementById(element).value;
+            console.log(name);
+            if (checkNames(name)) {
+                document.getElementById(element).style.color = "limegreen";
+                allowed_click = true;
+            } else {
+                document.getElementById(element).value = name + " name's wrong!";
+                document.getElementById(element).style.color = "red";
+            }
+            return false;
+        }
+
+        function validate() {
+            var email = $("#email").val();
+            if (validateEmail(email)) {
+                $("#email").css("color", "limegreen");
+                allowed_click = true;
+            } else {
+                $("#email").val(email + " email's wrong!");
+                $("#email").css("color", "red");
+            }
+            return false;
+        }
+
+        function setColour(id) {
+            document.getElementById(id).style.color = 'darkmagenta';
+        }
+
+        function comparePasswords() {
+            var password = $("#userPassword").val();
+            var confirmed = $("#confirmedPassword").val();
+
+            if(password.localeCompare(confirmed) !== 0){
+                console.log("dxfcgbjhnk;lbjhcvx");
+                document.getElementById('errorBlock').style.display = 'block';
+                /*$("#errorBlock").css("visibility", "visible");
+                $("#textIn").css("visibility", "visible");
+                $("#textIn").val="ABC";*/
+                /*document.getElementById('textIn').style.display = 'block';
+                document.getElementById('textIn').innerText = 'Wrong input of Your services!';*/
+            }
+        }
+
+        function setChecks() {
+            var password = $("#userPassword").val();
+            var uppers, digits, count, special = false;
+            if (/\d/.test(password)) {
+                $("#digitsCheck").prop("checked", true);
+                digits = true;
+            }
+            if(/[A-Z]/.test(password)){
+                $("#upperCheck").prop("checked", true);
+                uppers = true;
+            }
+            if(/[~`!#$%^&*.)(+=\-\[\]\\';,/{}|@":<>?]/.test(password)){
+                $("#specialCheck").prop("checked", true);
+                special = true;
+            }
+            if(password.length >= 8){
+                $("#lengthCheck").prop("checked", true);
+                count = true;
+            }
+
+            if (!uppers) {
+                $("#upperCheck").prop("checked", false);
+            }
+            if (!digits) {
+                $("#digitsCheck").prop("checked", false);
+            }
+            if(!count){
+                $("#lengthCheck").prop("checked", false);
+            }
+            if (!special){
+                $("#specialCheck").prop("checked", false);
+            }
+        }
+
+        function isClickAllowed() {
+            var allowed_click;
+            if (correct_login && correct_name && correct_surname && correct_services && correct_services_input
+                && correct_password && match) {
+                allowed_click = true;
+                console.log("allowed_click = " + allowed_click);
+                $("#registrationForm").submit();
+                return true;
+            }
+            else if(typeof allowed_click==='undefined') {
+                console.log("allowed_click = " + allowed_click);
+                $('#registrationForm').submit(function (evt) {
+                    evt.preventDefault();
+                });
+                document.getElementById('errorBlock').style.display = 'block';
+                document.getElementById('textIn').style.display = 'block';
+                document.getElementById('textIn').innerText = 'Sorry, but You\'ve to correct some fields.';
+                return false;
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+<div id="wrapper">
+    <div id="switchers">
+        <select name="languageSwitcher"
+                style="width:65px; height: 30px;color: darkmagenta; font: 18px Constantia, serif;">
+            <option>ENG</option>
+            <option>RU</option>
+            <option>UKR</option>
+        </select>
+    </div>
+    <div class="panel" style="height: 520px">
+        <div class="input-block">
+            <form>
+                <p class="long-p">Login</p>
+                <p class="long-p">First name</p>
+                <p class="long-p">Last name</p>
+                <p style="margin-bottom: 65px">Existed services</p>
+                <p class="hell-long-p">Your own services</p>
+                <p class="long-p">Password</p>
+                <p>Confirm your password</p>
+            </form>
+        </div>
+        <div class="text-block" style="position: fixed; top: 30px;">
+            <form method="post" action="registration">
+                <p><input type="text" name="login" id="email" oninput="setColour('email')" onchange="validate()"></p>
+                <p><input type="text" id="firstName" name="firstName" oninput="setColour('firstName')"
+                          onchange="check('firstName')">
+                <p><input type="text" id="lastName" name="lastName" oninput="setColour('lastName')"
+                          onchange="check('lastName')"></p>
+                <form>
+                    <p><select multiple="multiple" id="services" style="width: 300px; height: 75px"
+                               onblur="checkServices()">
+                        <option>Service1</option>
+                        <option>Service2</option>
+                    </select></p>
+                    <p style="margin-bottom: 6px"><textarea id="ownServices" name="ownServices" required rows="7" cols="35"
+                                                            minlength="2"
+                                                            placeholder="You can also type Your own services separating them by spaces and comas"
+                                                            onblur="checkServices()"></textarea>
+                    </p>
+                </form>
+                <p><input type="password" id="userPassword" oninput="setChecks()" onchange="setChecks()"></p>
+                <p><input type="password" id="confirmedPassword" onchange="comparePasswords()"></p>
+            </form>
+        </div>
+        <button style="width:230px; position: fixed; top: 530px; left: 570px">
+            Register <span class="glyphicon glyphicon-ok" style="font-style: italic" onclick="isClickAllowed()"></span>
+        </button>
+    </div>
+    <div class="block" style="cursor: hand; margin-right: 25px; margin-left: 100px; position: fixed; top: 240px;">
+        <a href="LoginPage.html">
+            Have You already
+            <br>had your account?
+        </a>
+    </div>
+    <div class="block" style="cursor: hand; position: fixed; top: 240px; right: 170px">
+        <a href="InfoPage.html">
+            Some info
+            <br>about us...</a>
+    </div>
+    <div class="password-block" id="passwordBlock" style="position: fixed; top:445px; left: 100px">
+        <input type="checkbox" disabled="disabled" id="upperCheck"> uppercase
+        <p style="margin-bottom: 1px"><input disabled="disabled" type="checkbox" id="digitsCheck"> digit</p>
+        <p style="margin-bottom: 1px"><input disabled="disabled" type="checkbox" id="specialCheck"> special character
+        </p>
+        <p style="margin-bottom: 1px"><input disabled="disabled" type="checkbox" id="lengthCheck"> 8 symbols or more
+        </p>
+    </div>
+    <div class="error-block" id="errorBlock">
+        <div class="text" id="textIn">
+        </div>
+    </div>
+</div>
+<div id="dateBlock"><span id="clock">&nbsp;</span>
+    <script src="../static/css/Scripts.js">
+    </script>
+</div>
+<div id="footer">Created by Elena Maximenko</div>
+</body>
+</html>

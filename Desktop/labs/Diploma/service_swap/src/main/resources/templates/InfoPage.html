@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type="text/css" href="../static/css/Styles.css">
+</head>
+<style type="text/css">
+    a:link {color: white;}      /* unvisited link */
+    a:visited {color: white;}   /* visited link */
+    a:hover {color: white;}     /* mouse over link */
+    a:active {color: white;}    /* selected link */
+    /*#text-place {font: 22px italic Kokila, serif;}*/
+</style>
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+<div id="switchers">
+    <select name="languageSwitcher" style="width:65px; height: 30px;color: darkmagenta; font: 18px Constantia, serif;">
+        <option>ENG</option>
+        <option>RU</option>
+        <option>UKR</option>
+    </select>
+    <div id="switcher">
+        <select name="switcher" style="position:fixed; top: 20px; right: 535px;width:150px; height: 30px;color: darkmagenta; font: 18px Constantia, serif;">
+            <option>Users</option>
+            <option>Categories</option>
+            <option>Services</option>
+        </select>
+    </div>
+</div>
+<div id="wrapper">
+    <div id="infoBlock">
+        <div id="text-place" style="position: fixed; left: 40px; top: 75px;">
+            &nbsp;&nbsp;&nbsp; Barter's the oldest economic form in the world.
+            <br>&nbsp;&nbsp;&nbsp; Although it's still popular and
+            many large successful corporations such as "General Electric",
+            "Marriott International" and "Carnival Cruise Lines"
+            have been using barter nowadays.<br>
+            &nbsp;&nbsp;&nbsp; You can also try being successful!
+            <br> &nbsp;&nbsp;&nbsp;&nbsp;Just sign up our site and enjoy numerous features!
+            They are having a deal, edition of an offered deal, Your business partner's estimation.
+            <br>&nbsp;&nbsp;&nbsp; Also, in case of deal unsatisfactory, You always can send
+            a claim to our administrator and Your unfair partner'll be blocked or even deleted.
+            <br>&nbsp;&nbsp;&nbsp; Set up convenient conditions for You and our site's the shortest way to making profitable deals!
+        </div>
+    </div>
+    <div class="panel" style="margin-left: 400px; width:450px; height: 530px; background-color: transparent;">
+            Olena Maksymenko
+        <p> Dmitry Kozitets </p>
+    </div>
+</div>
+<div id="dateBlock"> <span id="clock">&nbsp;</span>
+    <script src="../static/css/Scripts.js">
+    </script>
+</div>
+<div id="footer">Created by Elena Maximenko</div>
+</body>
+</html>

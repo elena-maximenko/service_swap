@@ -19,6 +19,10 @@ public class Category {
     @Column(name="name", unique = true)
     private String name;
 
+    public Category(String name){
+        this.name = name;
+    }
+
  /*   @OneToMany(mappedBy = "category")
     private Set<Service> services;
 */

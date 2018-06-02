@@ -25,4 +25,10 @@ public class CategoryRestController {
         categoryService.delete(id);
         return categoryService.findAll();
     }
+
+    @PostMapping("/create-category/{name}")
+    public List<Category> createCategory(@PathVariable String name){
+        categoryService.create(new Category(name));
+        return categoryService.findAll();
+    }
 }

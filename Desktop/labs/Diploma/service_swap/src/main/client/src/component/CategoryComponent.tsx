@@ -6,7 +6,6 @@ import CategoryModal from "./CategoryModal";
 import {Button} from "react-bootstrap";
 
 class CategoryComponent extends React.Component<{}, any> {
-    // public categoryModal:CategoryModal;
 
     constructor(props: any) {
         window.console.log('11');
@@ -15,7 +14,6 @@ class CategoryComponent extends React.Component<{}, any> {
 
         this.state = {
             categories: [],
-           // categoryModal: CategoryModal,
             isLoading: false,
             showPopup: false
         };
@@ -94,7 +92,7 @@ class CategoryComponent extends React.Component<{}, any> {
                     </table>
                 </div>
                 {this.state.showPopup ?
-                    <CategoryModal
+                    <CategoryModal categoryComponent={this}
                         closePopup={this.togglePopup}
                     />
                     : null

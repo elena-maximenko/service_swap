@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type="text/css" href="../static/css/Styles.css">
+</head>
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+<div id="wrapper">
+    <div id="switchers">
+        <select name="languageSwitcher" style="width:65px; height: 30px;color: darkmagenta; font: 18px Constantia, serif;">
+            <option>ENG</option>
+            <option>RU</option>
+            <option>UKR</option>
+        </select>
+    </div>
+    <div class="panel" style="height: 210px">
+        <div class="input-block">
+            <form>
+                <p class="long-p">Login</p>
+                <p class="long-p">Password</p>
+            </form>
+        </div>
+        <div class="text-block" style="position: fixed; top: 30px;">
+            <form method="post" action="registration">
+                <p><input type="text" name="login"></p>
+                <p><input type="password" name="password"></p>
+            </form>
+        </div>
+        <button style="width:230px; position: fixed; top: 185px; left: 570px">
+            Log in <span class="glyphicon glyphicon-ok" style="font-style: italic"></span>
+        </button>
+    </div>
+</div>
+<div id="dateBlock"> <span id="clock">&nbsp;</span>
+    <script src="../static/css/Scripts.js">
+    </script>
+</div>
+<div id="footer">Created by Elena Maximenko</div>
+</body>
+</html>

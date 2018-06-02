@@ -17,6 +17,7 @@ class EditCategoryModal extends React.Component<any, /*{ value: string }*/any> {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.closePopup = this.closePopup.bind(this);
     }
 
     public handleChange(event) {
@@ -38,17 +39,18 @@ class EditCategoryModal extends React.Component<any, /*{ value: string }*/any> {
             .then(data => (this.props.categoryComponent.setState({categories: data})));
 
         this.props.categoryComponent.componentDidMount();
-
-        this.props.closePopup();
     }
 
     public closePopup() {
         this.setState({
-            isOpen: false
+            isClosed: true
         });
     }
 
     public render() {
+        if(this.state.isClosed){
+        return null;
+}
         return (
             <div className="static-modal">
                 <Modal.Dialog>
@@ -60,7 +62,7 @@ class EditCategoryModal extends React.Component<any, /*{ value: string }*/any> {
 
         <Modal.Footer>
         <Button bsStyle="primary" onClick={this.edit.bind(this, this.props.id)}>OK</Button>
-        <Button onClick={this.props.closePopup}>
+        <Button onClick={this.closePopup}>
         Close
         </Button>
         </Modal.Footer>

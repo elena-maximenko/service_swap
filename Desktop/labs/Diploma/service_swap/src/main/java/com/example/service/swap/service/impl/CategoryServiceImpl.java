@@ -21,7 +21,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(Category category){
-        System.out.println("UPDATE SERVICE");
         return categoryRepository.saveAndFlush(category);
     }
 

@@ -36,7 +36,6 @@ public class CategoryRestController {
         Category editedCategory = categoryService.findOne(id);
         editedCategory.setName(name);
         categoryService.update(editedCategory);
-        System.out.println("categories = " + getCategories());
         return categoryService.findAll();
     }
 }

@@ -15,7 +15,6 @@ public class CategoryRestController {
     private CategoryService categoryService;
 
     @GetMapping(value = "/categories")
-    @CrossOrigin(origins = "http://localhost:3000")
     public List<Category> getCategories() {
         return categoryService.findAll();
     }
@@ -29,6 +28,15 @@ public class CategoryRestController {
     @PostMapping("/create-category/{name}")
     public List<Category> createCategory(@PathVariable String name){
         categoryService.create(new Category(name));
+        return categoryService.findAll();
+    }
+
+    @PostMapping("/edit-category/{id}/{name}")
+    public List<Category> editCategory(@PathVariable int id, @PathVariable String name){
+        Category editedCategory = categoryService.findOne(id);
+        editedCategory.setName(name);
+        categoryService.update(editedCategory);
+        System.out.println("categories = " + getCategories());
         return categoryService.findAll();
     }
 }

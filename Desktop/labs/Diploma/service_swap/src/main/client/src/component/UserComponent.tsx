@@ -68,11 +68,6 @@ class UserComponent extends React.Component<{}, any>{
                                         {user.login}
                                     </td>
                                     <td>
-                                        <button className="glyphicon-button">
-                                            <a> <i className="fas fa-pencil-alt"/></a>
-                                        </button>
-                                    </td>
-                                    <td>
                                         <button className="glyphicon-button-delete" onClick={this.deleteUser.bind(this, user.id)}>
                                             <i className="fas fa-trash-alt"/>
                                         </button>

@@ -4,6 +4,7 @@ import * as React from "react";
 import CategoryModal from "./CategoryModal";
 
 import {Button} from "react-bootstrap";
+import EditCategoryModal from "./EditCategoryComponent";
 
 class CategoryComponent extends React.Component<{}, any> {
 
@@ -14,7 +15,9 @@ class CategoryComponent extends React.Component<{}, any> {
 
         this.state = {
             categories: [],
+            editedCategoryId: Number,
             isLoading: false,
+            showEdit: false,
             showPopup: false
         };
     }
@@ -22,6 +25,13 @@ class CategoryComponent extends React.Component<{}, any> {
     public togglePopup() {
         this.setState({
             showPopup: !this.state.showPopup
+        });
+    }
+
+    public showEdit(id:number) {
+        this.setState({editedCategoryId: id});
+        this.setState({
+            showEdit: !this.state.showEdit
         });
     }
 
@@ -78,7 +88,7 @@ class CategoryComponent extends React.Component<{}, any> {
                                     {category.name}
                                 </td>
                                 <td>
-                                    <button className="glyphicon-button">
+                                    <button className="glyphicon-button" onClick={this.showEdit.bind(this, category.id)}>
                                         <i className="fas fa-pencil-alt"/>
                                     </button>
                                 </td>
@@ -94,6 +104,12 @@ class CategoryComponent extends React.Component<{}, any> {
                 {this.state.showPopup ?
                     <CategoryModal categoryComponent={this}
                         closePopup={this.togglePopup}
+                    />
+                    : null
+                }
+                {this.state.showEdit ?
+                    <EditCategoryModal categoryComponent={this}
+                                   closePopup={this.togglePopup} id = {this.state.editedCategoryId}
                     />
                     : null
                 }

@@ -3,14 +3,18 @@ import {TextField} from 'material-ui';
 import * as React from "react";
 
 import {Button, Label, Modal} from "react-bootstrap";
+import CategoryComponent from "./CategoryComponent";
 
-class CategoryModal extends React.Component<any, { value: string }> {
+class CategoryModal extends React.Component<any, /*{ value: string }*/any> {
 
     constructor(props: any) {
         super(props);
         this.create = this.create.bind(this);
 
-        this.state = {value: ''};
+        this.state = {
+            categoryComponent: CategoryComponent,
+            value: ''
+        };
 
         this.handleChange = this.handleChange.bind(this);
     }
@@ -19,19 +23,34 @@ class CategoryModal extends React.Component<any, { value: string }> {
         this.setState({value: event.target.value});
     }
 
-    public create(){
-        window.console.log(this.state.value);
+    public create() {
+        const name = this.state.value;
+
+        window.console.log(name);
+
+        fetch('http://localhost:8080/create-category/' + name, {
+            headers: {
+                'Accept': 'application/json, text/plain',
+            },
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => (this.props.categoryComponent.setState({categories: data})));
+
+        this.props.categoryComponent.componentDidMount();
+
+        this.props.closePopup();
     }
 
-   /* public closePopup ()  {
+    public closePopup() {
         this.setState({
             isOpen: false
         });
-    }*/
+    }
 
     public render() {
         return (
-           <div className="static-modal">
+            <div className="static-modal">
                 <Modal.Dialog>
                     <Modal.Body>
                         <Label>Name </Label>
@@ -49,7 +68,6 @@ class CategoryModal extends React.Component<any, { value: string }> {
             </div>
         );
     }
-
 }
 
 export default CategoryModal;

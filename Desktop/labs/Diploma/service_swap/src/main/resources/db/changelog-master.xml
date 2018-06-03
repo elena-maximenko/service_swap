@@ -13,7 +13,7 @@
     <changeSet id="2" author="omaks" runAlways="true">
         <sqlFile path="db/fillDB.sql"/>
     </changeSet>
-    <changeSet id="3" author="omaks">
+    <changeSet id="3" author="omaks" runAlways="true">
         <addColumn schemaName="service_swap" tableName="service">
             <column name="difficulty" defaultValue="5" type="INT"/>
         </addColumn>

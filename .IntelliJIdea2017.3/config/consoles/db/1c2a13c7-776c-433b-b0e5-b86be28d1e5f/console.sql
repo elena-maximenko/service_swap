@@ -1,5 +1,3 @@
-CREATE DATABASE `a`;
-USE `a`;
-CREATE TABLE `a`.`q`(
-  ID INT
-);
+USE `service_swap`;
+
+select * from `service`;

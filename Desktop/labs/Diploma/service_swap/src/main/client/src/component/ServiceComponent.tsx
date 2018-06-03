@@ -47,6 +47,7 @@ class ServiceComponent extends React.Component<{}, any> {
                     <tr>
                         <th>Name</th>
         <th>Category</th>
+                        <th>Difficulty</th>
         <th/>
         <th/>
         </tr>
@@ -60,7 +61,7 @@ class ServiceComponent extends React.Component<{}, any> {
             {service.category.name}
             </td>
             <td>
-            {service.login}
+            {service.difficulty}
             </td>
             <td>
             <button className="glyphicon-button-delete" onClick={this.deleteService.bind(this, service.id)}>

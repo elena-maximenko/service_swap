@@ -6,4 +6,5 @@ export class Service{
     public name: string;
     public category: Category;
     public users: User[];
+    public difficulty: number;
 }

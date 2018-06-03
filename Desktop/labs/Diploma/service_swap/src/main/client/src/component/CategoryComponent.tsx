@@ -62,25 +62,7 @@ class CategoryComponent extends React.Component<{}, any> {
             .then(data => this.setState({categories: data, isLoading: false}));
     }
 
-   /* public sortByKey(array, key, asc) {
-        return array.sort((a, b) => {
-            const x = a[key];
-            const y = b[key];
-            if(asc){
-                return ((x < y) ? 1 : ((x > y) ? -1 : 0));
-            }
-            else {
-                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-            }
-        });
-    } */
-
     public sort(){
-       /* window.console.log("asc =" + this.asc);
-        const catego = this.sorter.sortByKey(this.state.categories, 'name', this.asc);
-        for(const cat of catego){
-            window.console.log("name = " + cat.name);
-        }*/
         this.setState({categories: this.sorter.sortByKey(this.state.categories, 'name', this.asc)});
         this.asc = (this.asc === true)?false:true;
     }

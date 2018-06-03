@@ -30,6 +30,16 @@ class Header extends Component {
                         </li>
                     </ul>
                 </div>
+                <div className="pull-right">
+                    <form className="navbar-form pull-right" role="search">
+                        <div className="input-group">
+                            <input type="text" className="form-control"/>
+                                <div className="input-group-btn">
+                                    <button className="btn btn-default" type="submit"><i className="fa fa-search"/></button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
             </nav>
         )
     }

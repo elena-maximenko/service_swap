@@ -21,6 +21,9 @@ public class Service {
     @Column(name = "name", unique = true)
     private String name;
 
+    @Column(name = "difficulty")
+    private int difficulty;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

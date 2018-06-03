@@ -6,11 +6,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1" author="emaxi" runAlways="true">
+    <changeSet id="1" author="omaks" runAlways="true">
         <validCheckSum>7:e707666936bee572a67e737a6a9933c4</validCheckSum>
         <sqlFile path="db/createDB.sql"/>
     </changeSet>
-    <changeSet id="2" author="emaxi" runAlways="true">
+    <changeSet id="2" author="omaks" runAlways="true">
         <sqlFile path="db/fillDB.sql"/>
+    </changeSet>
+    <changeSet id="3" author="omaks">
+        <addColumn schemaName="service_swap" tableName="service">
+            <column name="difficulty" defaultValue="5" type="INT"/>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>
